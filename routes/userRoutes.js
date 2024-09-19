@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/dbConfig');
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/user');
+const userController = require('../controllers/userController');
 router.get('/', userController.index);
 router.get('/exibir/:id', userController.show);
 router.get('/cadastrar/', userController.createForm);
