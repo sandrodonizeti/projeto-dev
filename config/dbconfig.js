@@ -3,8 +3,8 @@ const mysql = require('mysql2/promise');
 const pool = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "aluno",
-    database: "cadastrodb",
+    password: "",
+    database: "tasklistdb",
 });
 
 module.exports = pool;
