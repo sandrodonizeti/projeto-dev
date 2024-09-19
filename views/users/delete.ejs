@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/pratica.css">
+    <link rel="stylesheet" href="/stylesheets/pratica.css">    <title>Deletar Usuário</title>
+</head>
+<div class="f">
+    <img src="/images/Tweet-Web.png" width=" 300 px">
+</div><br><br>
+<body>
+    <h1>Deletar Usuário</h1>
+
+    <div id="userInfo"></div>
+
+    <script>
+        // Supondo que "user" seja um objeto contendo os dados do usuário
+    
+ 
+    
+        const userInfoDiv = document.getElementById('userInfo');
+    
+        const properties = ['ID', 'Nome', 'Usuario', 'fotosExibidas', 'Data de Nascimento', 'Email', 'Sexo', 'Administrador', 'Estado', 'Data Cadastro', 'Data da Última Atualização'];
+    
+        properties.forEach(property => {
+            const p = document.createElement('p');
+            const bold = document.createElement('b');
+            bold.textContent = `${property}: `;
+            p.appendChild(bold);
+    
+            if (property === 'Administrador') {
+                p.innerHTML += user.administrator ? "Sim" : "Não";
+            } else if (property === 'Data da Última Atualização') {
+                p.innerHTML += user.updatedAt || "Nenhuma atualização realizada.";
+            } else {
+                p.innerHTML += user[property.toLowerCase()] || "Informação não disponível";
+            }
+    
+            userInfoDiv.appendChild(p);
+        });
+    </script>
+    
+
+    <form method="post" action="/usuarios/deletar/<%= user.id %>">
+        <input type="submit" value="Confirmar Deleção">
+    </form>
+    <h1><a href="/pratica">Chat</a></h1>
+    
+</body>
+
+</html>

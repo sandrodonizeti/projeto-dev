@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/pratica.css">
+    <link rel="stylesheet" href="/stylesheets/pratica.css">    <title>Listar Usuários</title>
+</head>
+<div class="f">
+    <img src="/images/Tweet-Web.png" width=" 300 px">
+</div>
+<body>
+    <h1>Listar Usuários</h1>
+    <table border>
+        <thead>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Usuário</th>
+            <th>Foto</th>
+            <th>Data de Nascimento</th>
+            <th>Email</th>
+            <th>Sexo</th>
+
+        </thead>
+        <tbody>
+            <% for (const user of users) { %>
+                <tr>
+                    <td>
+                        <%= user.id %>
+                    </td>
+                    <td>
+                        <%= user.name %>
+                    </td>
+                    <td>
+                        <%= user.photo %>
+                    </td>
+                    <td>
+                        <%= user.nickname %>
+                    </td>
+                    <td>
+                        <%= user.birthDate %>
+                    </td>
+                    <td>
+                        <%= user.email %>
+                    </td>
+                    <td>
+                        <%= user.sex %>
+                    </td>
+                    <td>
+                        <%= user.administrator ? "Sim" : "Não" %>
+                    </td>
+                    <td>
+                        <%= user.status %>
+                    </td>
+                    <td>
+                        <%= user.createdAt %>
+                    </td>
+                    <td>
+                        <%= user.updatedAt %>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><a href="/usuarios/atualizar/<%= user.id %>">Atualizar</a></li>
+                            <li><a href="/usuarios/deletar/<%= user.id %>">Deletar</a></li>
+                            <li><a href="/usuarios/exibir/<%= user.id %>">Exibir</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+    <br>
+    <li><a href="/pratica">Pratica</a></li>
+    <br>
+    <li><a href="/usuarios/cadastrar">Cadastrar Usuário</a></li>
+</body>
+
+</html>
