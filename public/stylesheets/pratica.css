@@ -17,7 +17,7 @@ a {
 }
 
 body {
-    background: #f5f4f7;
+    background: #b381e2;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -83,6 +83,7 @@ button:hover {
     }
 }
 
+/* Estilo padrão para desktop */
 .c {
     top: 0;
     width: 240px;
@@ -91,6 +92,7 @@ button:hover {
     margin-bottom: 0;
 }
 
+/* Para tablets */
 @media (max-width: 768px) {
     .c {
         width:0px;
@@ -98,6 +100,7 @@ button:hover {
     }
 }
 
+/* Para smartphones */
 @media (max-width: 480px) {
     .c {
         width: 200px;
@@ -118,7 +121,7 @@ button:hover {
     background-color: #fff;
     border-radius: 5px;
 }
-
+/* Estilo para o contêiner do formulário */
 #login {
     display: flex;
     justify-content: center;
@@ -126,26 +129,28 @@ button:hover {
     height: 100vh;
 }
 
+/* Estilo para o cartão */
 .card {
     width: 300px;
-    border-color: ;
-    border: 1px solid #2e2d2d;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilo para o cabeçalho do cartão */
 .card-header {
     text-align: center;
     margin-bottom: 20px;
 }
 
+/* Estilo para o rodapé do cartão */
 .card-footer {
     text-align: center;
     margin-top: 20px;
 }
 
+/* Estilo para os campos de entrada */
 .card-l input[type="text"] {
     width: 100%;
     padding: 8px;
@@ -165,6 +170,7 @@ button:hover {
     box-sizing: border-box;
 }
 
+/* Estilo para o botão de login */
 .submit {
     background-color: #4CAF50;
     color: rgb(12, 11, 11);
@@ -179,7 +185,7 @@ button:hover {
 .submit:hover {
     background-color: #45a049;
 }
-
+/* Estilo para o link de cadastro */
 .card-footer a {
     text-decoration: none;
     color: #0c0c0c;
@@ -295,7 +301,7 @@ li {
     height: 45px;
     border-radius: 8PX;
 }
-
+/* Para tablets */
 @media (max-width: 768px) {
     .r {
         width: 30%;
@@ -304,6 +310,7 @@ li {
     }
 }
 
+/* Para smartphones */
 @media (max-width: 480px) {
     .r {
         width: 30%;
@@ -337,6 +344,7 @@ ul {
     height: 100px;
 }
 
+/* Para tablets */
 @media (max-width: 768px) {
     .v {
         width: 100%;
@@ -344,6 +352,7 @@ ul {
     }
 }
 
+/* Para smartphones */
 @media (max-width: 480px) {
     .v {
         width: 100%;
@@ -415,36 +424,43 @@ ul {
     margin-bottom: 5px;
 }
 
+/* Estilo para o contêiner do usuário */
 .cu label {
     display: block;
     margin-bottom: 5px;
 }
 
+/* Estilo para o contêiner da foto */
 .cf label {
     display: block;
     margin-bottom: 5px;
 }
 
+/* Estilo para o contêiner da data de nascimento */
 .cdn label {
     display: block;
     margin-bottom: 5px;
 }
 
+/* Estilo para o contêiner da senha */
 .cs label {
     display: block;
     margin-bottom: 5px;
 }
 
+/* Estilo para o contêiner do email */
 .ce label {
     display: block;
     margin-bottom: 5px;
 }
 
+/* Estilo para o contêiner do sexo */
 .cmf label {
     display: block;
     margin-bottom: 5px;
 }
 
+/* Estilo para os campos de entrada */
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -456,6 +472,7 @@ select {
     box-sizing: border-box;
 }
 
+/* Estilo para o botão de cadastro */
 input[type="submit"] {
     background-color: #9ddf7f;
     color: rgb(17, 17, 17);
@@ -520,9 +537,12 @@ input[type="submit"]:hover {
   video {
     width: 100%;
     height: auto;
+    /* Ajusta a altura automaticamente */
     max-width: 100%;
+    /* Garante que o player não ultrapasse a largura do modal */
   }
 
+  /* Estilos para o contêiner de entrada */
 .input-container {
     position: relative;
     display: flex;
@@ -530,28 +550,31 @@ input[type="submit"]:hover {
     width: 100%;
 }
 
+/* Estilos para a caixa de texto */
 input.c {
     width: 100%;
-    padding-right: 40px;
+    padding-right: 40px; /* Espaço para o ícone */
     box-sizing: border-box;
     border-radius: 5px; 
 }
 
+/* Estilos para o ícone */
 .icon {
     position: absolute;
-    right: 10px; 
+    right: 10px; /* Espaçamento do lado direito */
     cursor: pointer;
     color: #666;
     transition: opacity 0.3s;
-    font-size: 1.5em; 
+    font-size: 1.5em; /* Ajuste o tamanho do ícone */
 }
 
 .icon.hidden {
     opacity: 0;
 }
 
+/* Estilos para o modal e conteúdo */
 .modal {
-    display: none;
+    display: none; /* Oculto por padrão */
     position: fixed;
     z-index: 9999;
     left: 0;

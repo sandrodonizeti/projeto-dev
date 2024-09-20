@@ -22,14 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-
-
-app.use(express.static(path.join(__dirname, 'uploads')));
-
-
-
-
-
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     console.log("filename app.js");   
@@ -45,11 +37,13 @@ const storage = multer.diskStorage({
 
 
 const upload = multer({ storage: storage });
+require('dotenv').config();
 app.use(session({
-  secret: process.env.session_secret || 'chave-secreta-padrao', // Valor padrão
+  secret: process.env.session_secret,
   resave: false,
   saveUninitialized: true,
 }));
+
 
 app.use(checkLoggedIn);
 app.use('/', indexRouter);
