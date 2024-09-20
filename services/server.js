@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
 
 const app = express();
-const port = 4000;
+const port = 3000;
 
 mongoose.connect('mongodb://localhost:27017/photo_upload_db', {
   useNewUrlParser: true,
