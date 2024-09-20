@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/pratica.css">
+    <title>Entrar</title>
+</head>
+<div class="f">
+    <img src="/images/Tweet-Web.png" width=" 300 px">
+</div>
+
+<body>
+    <div id="login">
+        <% if (locals.errorMessage) { %>
+            <p class="error-message">
+                <%= errorMessage %>
+            </p>
+            <% } %>
+            <div class="log">
+                <form action="/autenticacao/login" method="post" class="card">
+                    <div class="card-header">
+                        <h2><img src="/images/logo.png" width=" 300 px"></h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-content-area">
+                          
+                                <label for="usuario">Usuário</label>
+                            
+                            <input type="text" id="usuario" name="usernameOrEmail" autocomplete="off" required>
+                        </div>
+                        <div class="card-content-area">
+                            <label for="password">Senha</label>
+                            <input type="password" id="password" name="password" autocomplete="off" maxlength="10" required>
+                            <i class="password-icon toggle-password" onclick="togglePasswordVisibility('password')">👁️</i>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" value="login" class="submit">
+                        <a href="/usuarios/cadastrar">Cadastrar</a>
+                    </div>
+                </form>
+            </div>
+    </div>
+    <script>
+        function togglePasswordVisibility(inputId) {
+            const input = document.getElementById(inputId);
+            input.type === 'password' ? input.type = 'text' : input.type = 'password';
+            input.type === 'password' ? input.nextElementSibling.textContent = '👁️' : input.nextElementSibling.textContent = '🙈';
+        }
+    </script>
+</body>
+
+</html>
