@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/pratica.css">
+</head>
+<div class="f">
+  <img src="/images/Tweet-Web.png" width="300px">
+</div>
+
+<body class="master">
+  <div class="container" id="container">
+
+    <div class="m">
+      <ul>
+        <a href="/" style="height: 60px; width: 60px;">
+          <button type="button" class="btn btn-outline-light text-dark">Sair</button>
+        </a>
+      </ul>
+    </div>
+    <div class="n">
+      <a href="/usuarios/atualizar/<%= user.id %>">
+        <h5>Editar perfil</h5>
+      </a><br>
+      <a href="/usuarios/deletar/<%= user.id %>">
+        <h5>Deletar perfil</h5>
+      </a>
+    </div>
+    <div class="wrapper" id="textiaria">
+      <div class="textiaria" id="textiaria">
+        <% let currentUsername=null; %>
+          <% for (const mensagem of mensagens) { %>
+            <% if (mensagem.username !==currentUsername) { %>
+              <div class="p">
+                <img id="photo_<%= mensagem.id %>" src="<%= mensagem.photo %>"
+                  style="width: 1cm; height: 1cm; border-radius: 50px;">
+                <%= mensagem.username %>
+              </div>
+              <% currentUsername=mensagem.username; %>
+                <% } %>
+                  <div class="j">
+                    <h3>
+                      <% if (mensagem.filename) { %>
+                        <% if (mensagem.filename.includes(".jpg") || mensagem.filename.includes(".jpeg") ||
+                          mensagem.filename.includes(".png") || mensagem.filename.includes(".gif")) { %>
+                          <img src="<%= mensagem.filename %>" alt="" class="upload-foto">
+                          <% } else if (mensagem.filename.includes(".mp3")) { %>
+                            <button class="mod" onclick="abrirModal('<%= mensagem.filename %>')">
+                              <h6>Ouvir Áudio</h6>
+                            </button>
+                            <% } else if (mensagem.filename.includes(".mp4") || mensagem.filename.includes(".webm")) {
+                              %>
+                              <button class="mod" onclick="abrirVideoEmNovaAba('<%= mensagem.filename %>')">
+                                <h6>Assistir Vídeo</h6>
+                              </button>
+                              <% } else if (mensagem.filename.includes(".pdf")) { %>
+                                <div>
+                                  PDF
+                                </div>
+                                <% } else if (mensagem.filename.includes(".doc") || mensagem.filename.includes(".docx"))
+                                  { %>
+                                  <div>
+                                    Word
+                                  </div>
+                                  <% } %>
+                                    <div>
+                                      <a href="<%= mensagem.filename %>" download>
+                                        <h6>Baixar</h6>
+                                      </a>
+                                    </div>
+                                    <% } %>
+                                      <%= mensagem.content %>
+                                        <span class="i">
+                                          <%= mensagem.createdAt %>
+                                        </span>
+                    </h3>
+                  </div>
+                  <br>
+                  <% } %>
+
+                    <% let fotosExibidas=[]; %>
+                      <% for (const mensagem of mensagens) { %>
+                        <% if (mensagem.photo && !fotosExibidas.includes(mensagem.photo)) { %>
+                          <div class="photo-container">
+                            <!-- Content for the photo container if needed -->
+                          </div>
+                          <% fotosExibidas.push(mensagem.photo); %>
+                            <% } %>
+                              <% } %>
+      </div>
+    </div>
+
+    <div class="z">
+      <div>
+        <h1>Protótipo.</h1>
+        <h2>Esta página está sendo desenvolvida por um aluno do IFSP Campos Caraguatatuba.</h2>
+      </div>
+
+      <div style="display: flex; flex-direction: row; gap: 2rem">
+        <form class="x" action="/pratica" method="post" autocomplete="off" onsubmit="return validateMessage()">
+          <div class="input-container">
+            <input class="c" type="text" id="mensagem" name="mensagem" autocomplete="off"
+              placeholder="Digite uma mensagem..." oninput="toggleIconVisibility()">
+            <span class="icon" id="icon-upload" onclick="openModal()"><H3>📎</H3></span>
+          </div>
+          <input class="d" type="hidden" name="user_id" id="user_id" value="<%= user_id %>"><br>
+          <button class="r" id="submit-button" type="submit">
+            <h2>Enviar</h2>
+          </button>
+        </form>
+
+        <!-- Modal para Upload de Arquivo -->
+        <div id="upload-modal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">x</span>
+            <form class="v" id="upload-form" action="/upload" method="POST" enctype="multipart/form-data"
+              onsubmit="return validatePhoto()">
+              <input class="c" type="file" id="file-input" name="file">
+              <input class="d" type="hidden" name="user_id" id="user_id" value="<%= user_id %>">
+              <button class="r" id="upload-button" type="submit">
+                <h4>Enviar</h4>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">x</span>
+      <audio controls id="audioPlayer">
+        <source src="" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div id="modal-content" class="modal-content">
+
+    </div>
+    <buttonn class="mod1" id="close-modal" onclick="fecharModal()">Fechar</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/javascripts/pratica.js"></script>
+  <script src="/js/script.js"></script>
+
+
+</body>
+
+</html>
