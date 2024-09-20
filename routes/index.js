@@ -1,9 +1,15 @@
-var express = require('express');
-var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/dbConfig');
+const express = require('express');
+const router = express.Router();
+const userController = require('../controllers/userController');
+router.get('/', userController.index);
+router.get('/exibir/:id', userController.show);
+router.get('/cadastrar/', userController.createForm);
+router.post('/cadastrar/', userController.create);
+router.get('/atualizar/:id', userController.editForm);
+router.post('/atualizar/:id', userController.edit);
+router.get('/deletar/:id', userController.deleteForm);
+router.post('/deletar/:id', userController.delete);
 
 module.exports = router;
