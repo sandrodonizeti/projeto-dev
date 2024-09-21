@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const dbConfig = require('../config/dbConfig');
-
+const pool = require('../config/dbConfig');
 const multer = require('multer');
 const photoController = require('../controllers/photoController');
 const PhotoModel = require('../models/photoModel');
