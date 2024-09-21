@@ -9,7 +9,6 @@ const session = require('express-session');
 const checkLoggedIn = require('./middlewares/checkLoggedIn');
 const indexRouter = require('./routes/index');
 const userRoutes = require('./routes/userRoutes');
-const authRoutes = require('./routes/authRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 
 const app = express();
@@ -20,16 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-
-
-
 app.use(express.static(path.join(__dirname, 'uploads')));
-
-
-
-
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -41,8 +31,6 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
-
-
 
 
 const upload = multer({ storage: storage });
@@ -57,7 +45,6 @@ app.use(session({
 app.use(checkLoggedIn);
 app.use('/', indexRouter);
 app.use('/usuarios', userRoutes);
-app.use('/autenticacao', authRoutes);
 app.post('/upload', upload.single('file'), function (req, res, next) {
   if (!req.file) {
     return res.status(400).send('No file selected.');
