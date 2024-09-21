@@ -10,6 +10,7 @@ const checkLoggedIn = require('./middlewares/checkLoggedIn');
 const indexRouter = require('./routes/index');
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -19,6 +20,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+
+
+app.use(express.static(path.join(__dirname, 'uploads')));
+
+
 
 
 
